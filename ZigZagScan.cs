@@ -1,4 +1,12 @@
-public class ZigZagScan
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zigzagscan
+{
+	public class ZigZagScan
 	{
 		readonly int _a, _b;
 
@@ -9,8 +17,6 @@ public class ZigZagScan
 			_a = a;
 			_b = b == 0 ? b = _a : b;
 		}
-
-		Stopwatch sw = new Stopwatch();
 
 		public List<(int, int)> BuildPath()
 		{
@@ -32,15 +38,36 @@ public class ZigZagScan
 
 		void Next(ref int i, ref int j, ref int d)
 		{
-			if (d == 1)	{
-				if (i == _a){ j++; d = -1; } else 
-				if (j == 0)	{ i++; d = -1; }	
-				else		{ i++; j--; }
-			} 
-			else {
-				if (j == _b){ i++; d = +1; } else 
-				if (i == 0)	{ j++; d = +1; }
-				else		{ j++; i--;	}
+			if (d == 1)
+			{
+				if (i == _a)
+				{
+					j++; d = -1;
+				}
+				else if (j == 0)
+				{
+					i++; d = -1;
+				}
+				else
+				{
+					i++; j--;
+				}
+			}
+			else
+			{
+				if (j == _b)
+				{
+					i++; d = +1;
+				}
+				else if (i == 0)
+				{
+					j++; d = +1;
+				}
+				else
+				{
+					j++; i--;
+				}
 			}
 		}
 	}
+}
